@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="./regstyle.css" />
+  </head>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+  </style>
+  <body>
+    <div class="container">
+      <div class="content">
+        <div>
+          <h2>Registration Form</h2>
+        </div>
+        <div class="form-div">
+          <form action="" method="post">
+            <div>
+              <label for="fname">FirstName: </label>
+              <div>
+                <input
+                  class="values"
+                  type="text"
+                  name="fname"
+                  id="fname"
+                  required />
+              </div>
+            </div>
+            <div>
+              <label for="lname">LastName: </label>
+              <div>
+                <input
+                  class="values"
+                  type="text"
+                  name="lname"
+                  id="lname"
+                  required />
+              </div>
+            </div>
+            <div>
+              <label for="em">Email Id: </label>
+              <div>
+                <input class="values" type="email" name="em" id="em" required />
+              </div>
+            </div>
+            <div>
+              <label for="phno">Phone No: </label>
+              <div>
+                <input
+                  class="values"
+                  type="tel"
+                  name="phno"
+                  id="phno"
+                  placeholder="91-1234567890"
+                  pattern="[0-9]{2}-[0-9]{10}"
+                  required />
+              </div>
+            </div>
+            <div>
+              <label for="dob">Date-of-Birth</label>
+              <div>
+                <input
+                  class="values"
+                  type="date"
+                  id="dob"
+                  name="dob"
+                  required />
+              </div>
+            </div>
+            <div>
+              <label for="addr">Enter Address </label>
+              <div>
+                <textarea
+                  class="values"
+                  name="addr"
+                  id="addr"
+                  cols="30"
+                  rows="10"></textarea>
+              </div>
+            </div>
+            <div>
+              <label for="gender">Gender: </label>
+              <div>
+                <input type="radio" name="gender" id="male" value="male" />
+                <span>Male</span>
+                <input type="radio" name="gender" id="female" value="female" />
+                <span>Female</span>
+              </div>
+            </div>
+            <div>
+              <label for="degree">Degree: </label>
+              <div>
+                <select class="values" name="degree" id="degree" required>
+                  <option value="mca">MCA</option>
+                  <option value="bca">BCA</option>
+                  <option value="bsc">BSC</option>
+                  <option value="msc">MSc</option></select
+                ><br /><br />
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div>
+          <button class="btn" type="button" id="accept">Submit</button>
+        </div>
+
+        <div class="display">
+          <p id="fnamee"></p>
+          <p id="lnamee"></p>
+          <p id="emm"></p>
+          <p id="phnoo"></p>
+          <p id="dobb"></p>
+          <p id="addrr"></p>
+          <p id="gen"></p>
+          <p id="dgr"></p>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.getElementById('accept').addEventListener('click', getValue);
+      function getValue() {
+        var fname = document.getElementById('fname').value;
+        var lname = document.getElementById('lname').value;
+        var em = document.getElementById('em').value;
+        var phno = document.getElementById('phno').value;
+        var dob = document.getElementById('dob').value;
+        var addr = document.getElementById('addr').value;
+        var degree = document.getElementById('degree').value;
+
+        document.getElementById('fnamee').innerHTML =
+          'Your First Name: ' + fname;
+        document.getElementById('lnamee').innerHTML =
+          'Your Last Name: ' + lname;
+        document.getElementById('emm').innerHTML = 'Your Email ID: ' + em;
+        document.getElementById('phnoo').innerHTML = 'Your Phone No: ' + phno;
+        document.getElementById('dobb').innerHTML =
+          'Your Date-Of-Birth: ' + dob;
+        document.getElementById('addrr').innerHTML = 'Your Address: ' + addr;
+        document.getElementById('dgr').innerHTML = 'Your Degree: ' + degree;
+        var y = document.querySelector('input[name="gender"]:checked').value;
+        document.getElementById('gen').innerHTML = 'Your Gender: ' + y;
+      }
+    </script>
+  </body>
+</html>

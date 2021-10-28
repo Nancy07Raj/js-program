@@ -1,0 +1,44 @@
+body{
+    margin 30px;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   margin: 50px 100px;
+}
+.crud{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: aquamarine;
+    width: 500px;
+    height: 300px;
+    margin: 10px 0;
+}
+.content{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: flex-start;
+    margin: 20px 0;
+    }
+.content label{
+margin: 0 10px;
+width: 100px;
+}
+.btn{
+    border:0;
+    height: 30px;
+    width: 100px;
+    margin: 0 5px;
+    background-color:coral;
+}
+table,th,td{
+    border: 1px solid #6B4F4F;
+    border-collapse:collapse;
+    padding: 5px 10px;
+}
+

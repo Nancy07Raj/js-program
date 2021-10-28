@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRUD</title>
+    <link rel="stylesheet" href="./crud.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="crud">
+        <form action="">
+          <div class="content">
+            <label for="sname">Student Name: </label>
+            <input type="text" id="sname" name="sname" />
+          </div>
+          <div class="content">
+            <label for="roll">Roll No: </label>
+            <input type="number" id="roll" name="roll" size="5" />
+          </div>
+          <div class="content">
+            <label for="addr">Address: </label>
+            <textarea name="addr" id="addr" cols="30" rows="5"></textarea>
+          </div>
+        </form>
+        <div class="content">
+          <button id="save" class="btn" type="button">SAVE</button>
+          <!-- <button id="dlt" class="btn" type="button">Delete</button> -->
+        </div>
+      </div>
+      <div class="display">
+        <table id="mytable">
+          <thead>
+            <tr>
+              <th>Stud.Name</th>
+              <th>RollNo</th>
+              <th>Address</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <script>
+      document.getElementById("save").addEventListener("click", myFun);
+      // document.getElementById("dlt").addEventListener("click", mydlt);
+      var table = document.getElementById("mytable");
+      var len = table.rows.length;
+      // function mydlt(x) {
+      //  table.deleteRow(x.rowIndex);
+      // }
+      // function myedit()
+      // {
+
+      // }
+      function myFun() {
+        var table = document.getElementById("mytable");
+        var len = table.rows.length; // find row length including thead
+        var rw = table.insertRow(-1); // -1 denote last row
+        var cell1 = rw.insertCell(0);
+        var cell2 = rw.insertCell(1);
+        var cell3 = rw.insertCell(2);
+        var cell4 = rw.insertCell(3);
+        var cell5 = rw.insertCell(4);
+        var x = rw.rowIndex;
+        // delete Button
+        var btn = document.createElement("button");
+      btn.type = "button";
+      btn.innerHTML = "Delete";
+      btn.className = "btn";
+      btn.onclick = function mydlt(){
+       table.deleteRow(x);
+       }
+      //  edit button
+      var edt= document.createElement("button");
+      edt.type="button";
+      edt.innerHTML = "edit";
+      edt.className = "btn";
+      edt.onclick = function edt(x) {
+        var cell6 = rw. insertCell(5);
+        var sv =document.createElement("input");
+        sv.type= "button";
+        sv.innerHTML = "save";
+        sv.className ="btn";
+        sv.onclick=function edsv(){
+          cell1.innerHTML = document.getElementById("ed_name").value;
+          cell2.innerHTML = document.getElementById("ed_no").value;
+          cell3.innerHTML = document.getElementById("ed_addr").value;
+          cell6.removeChild(sv);
+      }
+         cell1.innerHTML="<input type='text' id= ed_name name='name'>";
+        cell2.innerHTML="<input type='text' id= ed_no name='no'>";
+        cell3.innerHTML="<input type='text' id=ed_addr name='ad'>";
+        cell6.appendChild(sv);
+        }
+        // end of edit button
+       cell1.innerHTML = document.getElementById("sname").value;
+        cell2.innerHTML = document.getElementById("roll").value;
+        cell3.innerHTML = document.getElementById("addr").value;
+        cell4.appendChild(btn);
+        cell5.appendChild(edt);
+        document.getElementById("sname").value = "";
+        document.getElementById("roll").value= "";
+        document.getElementById("addr").value ="";
+      }
+
+      </script>
+     
+      
+      
+  </body>
+</html>

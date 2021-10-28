@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>copy of curd</title>
+    <link rel="stylesheet" href="./crud.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="crud">
+        <form action="">
+          <div class="content">
+            <label for="sname">Student Name: </label>
+            <input type="text" id="sname" name="sname" />
+          </div>
+          <div class="content">
+            <label for="roll">Roll No: </label>
+            <input type="number" id="roll" name="roll" size="5" />
+          </div>
+          <div class="content">
+            <label for="addr">Address: </label>
+            <textarea name="addr" id="addr" cols="30" rows="5"></textarea>
+          </div>
+        </form>
+        <div class="content">
+          <button id="save" class="btn" type="button">SAVE</button>
+          <!-- <button id="dlt" class="btn" type="button">Delete</button> -->
+        </div>
+      </div>
+      <div class="display">
+        <table id="mytable">
+          <thead>
+            <tr>
+              <th>Stud.Name</th>
+              <th>RollNo</th>
+              <th>Address</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <script>
+      'use strict'
+        var isEditable = false;
+        var table = document.getElementById("mytable");
+        // var len = table.rows.length;
+        // -1 denote last row
+        
+      document.getElementById("save").addEventListener("click", myFun);
+      
+      
+      function myFun(x)
+      {
+        var rw = table.insertRow(-1);
+        var cell1 = rw.insertCell(0);
+        var cell2 = rw.insertCell(1);
+        var cell3 = rw.insertCell(2);
+        var cell4 = rw.insertCell(3);
+        var cell5 = rw.insertCell(4);
+        var x = rw.rowIndex;
+        var rollNo = new Array;
+        rollNo = cell2.innerHTML;
+       
+        var name = document.getElementById("sname").value;
+        var no = document.getElementById("roll").value;
+        var contact = document.getElementById("addr").value;
+        for(var i=0;i>=0;i++)
+        {
+        if(no !== rollNo[i])
+        {
+         
+          cell1.innerHTML = name;
+          cell2.innerHTML = no;
+          cell3.innerHTML = contact;
+         
+        
+        // delete Button
+        var del = document.createElement("button");
+      del.type = "button";
+      del.innerHTML = "Delete";
+      del.className = "btn";
+      del.onclick = function mydlt()
+      {
+       table.deleteRow(x);
+       };
+      //  edit button
+              var edt= document.createElement("button");
+              edt.type="button";
+              edt.innerHTML = "edit";
+              edt.className = "btn";
+              edt.onclick = function edt()
+              {
+                name = cell1.innerHTML;
+                no = cell2.innerHTML;
+                contact = cell3.innerHTML;
+               };
+        cell4.appendChild(del);
+        cell5.appendChild(edt);
+               
+        }
+        else{
+           cell1.innerHTML = name;
+          cell2.innerHTML = no;
+          cell3.innerHTML = contact;
+        }
+        }
+        name = "";
+        no = "";
+        contact ="";
+      }
+
+      </script>
+      </body>
+</html>
