@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find and Replace</title>
+    <style>
+        body{
+            margin: 20px 0;
+            display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        }
+        #container{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            height: 200px;
+            width: 90%;
+            background-color: #3F3351;
+            margin: 50px 0;
+        }
+        #add,#del,#fr{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: auto;
+            width: auto;
+            color: white;
+            margin: 10px 50px;
+        }
+        .C_add,.C_del,.C_fr,.C_rp{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            
+        }
+        #btn_add,#btn_del,#btn_fr{
+            border: 0;
+            background-color: #E9A6A6;
+            box-shadow: 1px 1px 1px #CEE5D0;
+            border-radius: 5px;
+            width: 120px;
+            height: 30px;
+            color: #082032;
+            font-size: 13px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="add">
+           <div class="C_add"> <label for="text_add" >ADD Text: </label>&nbsp;&nbsp;
+             <input type="text" id="text_add">
+            </div>
+            <button id="btn_add" type="button" onclick="add()">ADD </button>
+        </div>
+        <div id="del">
+            <div class="C_del"> <label for="text_del" >Delete Text: </label>&nbsp;&nbsp;
+                  <input type="text" id="text_del">
+                </div>
+            <button id="btn_del" type="button" onclick="del()">Delete </button>
+        </div>
+        <div id="fr">
+            <div class="C_fr"> <label for="text_fr" >Find Text: </label>&nbsp;&nbsp;
+                <input type="text" id="text_fr">
+            </div>
+
+            <div class="C_rp"> <label for="text_rp" id="lb_rp">Replace Text: </label>&nbsp;&nbsp;
+                <input type="text" id="text_rp">
+            </div>
+
+            <button id="btn_fr" type="button" onclick="fr()">Find & Replace</button>
+        </div>
+    </div>
+    <div class="divider">
+        <table id="tab">
+            <tr> <th> Values</th> </tr>
+
+        </table>
+
+    </div>
+    <script>
+        "use strict"
+
+        var divider = document.getElementById("divider");
+        var table = document.getElementById("tab");
+        table.setAttribute("border","1px solid black");
+        table.setAttribute("width","200px");
+        function add()
+        {
+        var row = table.insertRow(-1);
+        var cell = row.insertCell(0);
+        table.style.textAlign="center";
+        cell.innerHTML = document.getElementById("text_add").value;
+        // divider.appendChild(table);
+        document.getElementById("text_add").value ="";
+        }
+
+        function del()
+        {
+            var text_del = document.getElementById("text_del").value;
+            for(var i=1;i<table.rows.length;i++)
+            {
+            var del_row = table.rows.item(i).cells; // get current row cells
+
+            for(var j=0;j<del_row.length;j++)
+            {
+            var del_cell = del_row.item(j).innerHTML; //get particular cell value
+
+            if(text_del == del_cell )
+            {
+                table.deleteRow(i);
+            }
+
+             }
+             }
+             document.getElementById("text_del").value="";
+        }
+        function fr()
+        {
+            var text_replace = document.getElementById("text_rp").value;
+            var text_find = document.getElementById("text_fr").value;
+            for(var i=1;i<table.rows.length;i++)
+            {
+            var find_row = table.rows.item(i).cells;
+
+            for(var j=0;j<find_row.length;j++)
+            {
+            var find_cell = find_row.item(j).innerHTML;
+            if(text_find == find_cell)
+            {
+                find_row.item(j).innerHTML = text_replace;
+            }
+        }
+        }
+        document.getElementById("text_rp").value="";
+        document.getElementById("text_fr").value="";
+
+        }
+    </script>
+</body>
+</html>

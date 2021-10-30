@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Employee Table View</title>
+    <style>
+        body{
+    margin: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+.container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: cornflowerblue;
+    height: 100px;
+    width: 500px;
+}
+#stud,#emp {
+background-color: #E9A6A6;
+border: 0;
+box-shadow: 1px 1px 4px gray;
+margin: 10px;
+height: 50px;
+width: 80px;
+}
+#tb1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   margin: 20px;
+    width: 400px;
+    height: 400px;
+}
+#stud_tb1,#emp_tb1{
+font-size: 15px;
+font-weight: 500;
+text-align: left;
+width: 100%;
+height: 200px;
+border-spacing: 10px;
+border-collapse: collapse;
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="stud" type="button" onclick="createTableStud()" >Student</button>
+
+        <button id="emp" type="button" onclick="createTableEmp()" >Employee</button>
+
+    </div>
+    <div id="tb1">
+<table id="stud_tb1">
+
+</table>
+<table id="emp_tb1">
+
+</table>
+
+    </div>
+
+    <script>
+        "use strict"
+        var table1 = document.getElementById("stud_tb1");
+        var table2 = document.getElementById("emp_tb1");
+
+         var stud_values =[ ['Student_Name','Rollno','Department','Year']
+            ,["Meena","S123","BCA","II"],["Aravid","S124","BCA","II"],["Murugan","S125","BCA","II"],
+        ["Monica","S126","BCA","II"] ];
+        var emply_values = [ ["Employee_Name","ID","Department","Experience"],["Raju","E123","CS","3Yrs"],
+        ["Kavitha","E124","MCA","5Yrs"],["Jenifer","E125","B.Com","3Yrs"],["Pravin","E126","Eng","7Yrs"]  ];
+
+       function createTableStud()
+        {
+
+                if(table2.rows.length ==0)
+            {table2.style.display="";}
+            else{
+                table2.style.display="none";
+                table1.style.display ="";
+
+            }
+
+            if(table1.rows.length == 0)
+            {
+
+             var divider= document.getElementById("tb1"); //get container to place table
+
+            table1.setAttribute("border","2px solid black");
+            table1.setAttribute("class","stud_table");
+
+            for(var i=0;i<stud_values.length;i++)
+            {
+                var row = table1.insertRow(i);
+                row.setAttribute("padding","10px 10px");
+            for(var j=0;j<stud_values[i].length;j++)
+            // for(var k=0;k<=3;k++)
+            {
+                var cell= row.insertCell(j);
+                cell.innerHTML = stud_values[i][j];
+                cell.setAttribute("class","stud_cell");
+
+            }
+            }
+            divider.appendChild(table1);
+
+             }
+             else
+             return 0;
+            }
+
+        function createTableEmp()
+        {
+            if(table1.rows.length ==0)
+            {table1.style.display="";}
+            else{table1.style.display="none";
+                table2.style.display="";
+                }
+
+            if(table2.rows.length == 0)
+            {
+
+            var divider= document.getElementById("tb1"); //get container to place table
+
+            // var tblbody =document.createElement("tbody"); // create tbody
+            table2.setAttribute("border","2px solid black");
+            table2.setAttribute("class","stud_table");
+            for(var i=0;i<emply_values.length;i++)
+            {
+                var row = table2.insertRow(i);
+                for (var j=0;j<emply_values[i].length;j++)
+            // for(var k=0;k<=3;k++)
+                {
+                var cell= row.insertCell(j);
+                cell.innerHTML = emply_values[i][j];
+
+                }
+            }
+            // table.appendChild(tblbody);
+            divider.appendChild(table2);
+          }
+          else
+          return 0;
+        }
+    </script>
+</body>
+</html>
