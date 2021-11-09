@@ -24,20 +24,18 @@ async function fetchfun(){
         let fet = await fetch("./fruityvise.json");
         let res = await  fet.json();
         insertValues(res);
-}
-
+        }
 function insertValues(data)
 
 {
     let category = fruitText.value;
-    
     let jsonlength = data.length;
-
-    for(var i=0; i<=jsonlength; i++)
+    let flag = "false";
+    for(i=0; i<=jsonlength;i++)
     {
-        if(category.toLowerCase() == data[i].name.toLowerCase())
+        if (category.toLowerCase() == data[i].name.toLowerCase())
         {
-        result.innerHTML += `
+        result.innerHTML = `
         <h1> ${data[i].name}</h1>
         <p> carbohydrates : ${data[i].nutritions.carbohydrates}
         <p> protein : ${data[i].nutritions.protein}
@@ -45,9 +43,15 @@ function insertValues(data)
         <p> calories : ${data[i].nutritions.calories}
         <p> Sugar : ${data[i].nutritions.sugar}
          `;
+         flag = "true";
+         console.log(data);
         }
-        }
-    alert("The fruit was not found");
-    fruitText.value="";
+        
     }
 
+    if(flag == "false")
+    {
+        alert("Error");
+    }
+   fruitText.value="";
+}
