@@ -70,7 +70,7 @@
       }
     </style>
   </head>
-  <body>
+  <body onload="checkUser();">
     <nav
       class="navbar navbar-expand-sm bg-dark container-fluid navbar-dark center"
     >
@@ -132,6 +132,11 @@
             document.getElementById("form").reset();
           })
           .catch((e) => console.log(e));
+      }
+
+      function checkUser() {
+        if (localStorage.getItem("accessToken") !== null)
+          location.replace("./task.html");
       }
     </script>
   </body>
