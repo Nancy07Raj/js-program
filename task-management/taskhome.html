@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Task Sheduling</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav
+      class="navbar navbar-expand-sm bg-dark container-fluid navbar-dark center"
+    >
+      <ul class="navbar-nav">
+        <li class="nav-item nav-space">
+          <a href="#" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item nav-space">
+          <a href="./task.html" class="nav-link">Task</a>
+        </li>
+        <li class="nav-item nav-space">
+          <a href="#" class="nav-link">DasshBoard</a>
+        </li>
+        <li class="nav-item nav-space">
+          <a href="#" class="nav-link">Task Schedule</a>
+        </li>
+        <li class="nav-item nav-space">
+          <a
+            href="./taskindex.html"
+            onclick="removeUserInfo();"
+            class="nav-link"
+            >Logout</a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <div class="content">
+      <p>Home Page</p>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"
+    >
+      function removeUserInfo()
+      {
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("email");
+        localStorage.removeItem("firstName");
+        localStorage.removeItem("lastName");
+        localStorage.removeItem("userId");
+      }
+    </script>
+  </body>
+</html>
